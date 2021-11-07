@@ -11,3 +11,10 @@ export const getKeys = async (req: Request, res: Response) => {
   const data = await cacheService.getKeys()
   res.status(200).send(data)
 }
+
+export const setValue = async (req: Request, res: Response) => {
+  const key: string = req.params.key
+  const value: string = req.body.value
+  await cacheService.setValue(key, value)
+  res.status(200).send()
+}

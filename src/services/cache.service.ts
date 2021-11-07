@@ -18,3 +18,14 @@ export const getKeys = async (): Promise<string[]> => {
   let cacheItems = await CacheModel.find().exec()
   return cacheItems.map(cacheItem => cacheItem.key)
 }
+
+export const setValue = async (key: string, value: string): Promise<void> => {
+  let cacheItem = await CacheModel.findOne({ key }).exec()
+  if (cacheItem) {
+    cacheItem.value = value
+    cacheItem.usedAt = new Date()
+    await cacheItem.save()
+  } else {
+    await CacheModel.create({ key, value })
+  }
+}
