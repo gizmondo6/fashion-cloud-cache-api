@@ -1,6 +1,6 @@
 import { model, Schema } from 'mongoose'
-import * as crypto from 'crypto'
 import env from '../env'
+import { generateString } from '../utils/string'
 
 const CACHE_TTL_SECONDS: number = parseInt(env.CACHE_TTL_SECONDS as string, 10)
 
@@ -19,7 +19,7 @@ const cacheSchema = new Schema<CacheItem>(
     },
     value: {
       type: String,
-      default: () => crypto.randomBytes(20).toString('hex')
+      default: generateString
     },
     usedAt: {
       type: Date,
