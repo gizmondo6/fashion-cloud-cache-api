@@ -1,4 +1,4 @@
-import CacheModel from '../models/cache.model'
+import CacheModel, { CacheItem } from '../models/cache.model'
 import logger from '../logger'
 
 export const getValue = async (key: string): Promise<string> => {
@@ -19,6 +19,14 @@ export const getKeys = async (): Promise<string[]> => {
   return cacheItems.map(cacheItem => cacheItem.key)
 }
 
+export const getItems = async (): Promise<Pick<CacheItem, 'key' | 'value'>[]> => {
+  let cacheItems = await CacheModel.find().exec()
+  return cacheItems.map(cacheItem => ({
+    key: cacheItem.key,
+    value: cacheItem.value
+  }))
+}
+
 export const setValue = async (key: string, value: string): Promise<void> => {
   let cacheItem = await CacheModel.findOne({ key }).exec()
   if (cacheItem) {
@@ -36,5 +44,5 @@ export const deleteItem = async (key: string): Promise<boolean> => {
 }
 
 export const deleteItems = async (): Promise<void> => {
-  await CacheModel.deleteMany({}).exec()
+  await CacheModel.deleteMany().exec()
 }
