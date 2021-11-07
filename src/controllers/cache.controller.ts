@@ -6,3 +6,8 @@ export const getValue = async (req: Request, res: Response) => {
   const data = await cacheService.getValue(key)
   res.status(200).send(data)
 }
+
+export const getKeys = async (req: Request, res: Response) => {
+  const data = await cacheService.getKeys()
+  res.status(200).send(data)
+}

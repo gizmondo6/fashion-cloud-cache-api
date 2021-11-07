@@ -13,3 +13,8 @@ export const getValue = async (key: string): Promise<string> => {
   }
   return cacheItem.value
 }
+
+export const getKeys = async (): Promise<string[]> => {
+  let cacheItems = await CacheModel.find().exec()
+  return cacheItems.map(cacheItem => cacheItem.key)
+}
