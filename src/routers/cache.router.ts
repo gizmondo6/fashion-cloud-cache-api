@@ -1,8 +1,8 @@
 import express from 'express'
-import { getKey } from '../controllers/cache.controller'
+import { getValue } from '../controllers/cache.controller'
 
 const router = express.Router()
 
-router.get('/:key', getKey)
+router.get('/value/:key', getValue)
 
 export default router
