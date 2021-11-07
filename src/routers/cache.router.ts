@@ -1,5 +1,5 @@
 import express from 'express'
-import {getKey} from '../controllers/cache.controller'
+import { getKey } from '../controllers/cache.controller'
 
 const router = express.Router()
 
