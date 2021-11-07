@@ -25,7 +25,12 @@
   },
   "homepage": "https://github.com/gizmondo6/fashion-cloud-cache-api#readme",
   "devDependencies": {
+    "@types/cors": "^2.8.12",
+    "@types/dotenv": "^8.2.0",
+    "@types/express": "^4.17.13",
+    "@types/helmet": "^4.0.0",
     "@types/jest": "^27.0.2",
+    "@types/node": "^16.11.6",
     "@typescript-eslint/eslint-plugin": "^5.3.0",
     "eslint": "^8.2.0",
     "eslint-config-prettier": "^8.3.0",
@@ -40,5 +45,11 @@
   },
   "lint-staged": {
     "src/**/*": "npm run lint"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "helmet": "^4.6.0"
   }
 }
