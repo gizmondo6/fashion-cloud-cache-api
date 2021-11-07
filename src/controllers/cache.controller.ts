@@ -18,3 +18,18 @@ export const setValue = async (req: Request, res: Response) => {
   await cacheService.setValue(key, value)
   res.status(200).send()
 }
+
+export const deleteItem = async (req: Request, res: Response) => {
+  const key: string = req.params.key
+  const hasDeleted = await cacheService.deleteItem(key)
+  if (hasDeleted) {
+    res.status(200).send()
+  } else {
+    res.status(404).send()
+  }
+}
+
+export const deleteItems = async (req: Request, res: Response) => {
+  await cacheService.deleteItems()
+  res.status(200).send()
+}

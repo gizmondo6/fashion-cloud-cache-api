@@ -29,3 +29,12 @@ export const setValue = async (key: string, value: string): Promise<void> => {
     await CacheModel.create({ key, value })
   }
 }
+
+export const deleteItem = async (key: string): Promise<boolean> => {
+  const result = await CacheModel.deleteOne({ key }, {}).exec()
+  return result.deletedCount > 0
+}
+
+export const deleteItems = async (): Promise<void> => {
+  await CacheModel.deleteMany({}).exec()
+}
